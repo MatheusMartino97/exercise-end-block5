@@ -1,8 +1,15 @@
 window.onload = function() {
-  let basePyramid = 17;
-  let numberOfLines = (basePyramid + 1) / 2;
+  function verifyEven(basePyramid){
+    if (basePyramid % 2 === 0){
+      return basePyramid - 1
+    }
+    else basePyramid
+  }
+  let basePyramid = verifyEven(20); // função para manter sempre a base impar
+  let numberOfLines = Math.floor((basePyramid + 1) / 2); 
   let controlLeft = numberOfLines; 
   let controlRight = numberOfLines;
+  console.log(basePyramid)
   //acessando onde ficará o corpo da pirâmide
   let triangle = document.querySelector(".triangle");
 
