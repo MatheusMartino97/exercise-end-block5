@@ -1,8 +1,19 @@
 window.onload = function() {
-  let basePyramid = 9;
-  let numberOfLines = (basePyramid + 1) / 2; // 5
-  let controlLeft = numberOfLines; // 5
-  let controlRight = numberOfLines; // 5
+  let basePyramid = 17;
+  let numberOfLines = (basePyramid + 1) / 2;
+  let controlLeft = numberOfLines; 
+  let controlRight = numberOfLines;
+  //acessando onde ficará o corpo da pirâmide
+  let triangle = document.querySelector(".triangle");
+
+   for (let count = 0; count < numberOfLines; count += 1){
+    // criando a quantidade de linhas dinamicamente 
+    let lineDiv = document.createElement('div')
+    lineDiv.className = 'line'
+    // adicionando cada linha ao corpo
+    triangle.appendChild(lineDiv)
+   }
+  //acessando todas as linhas para serem preenchidas
   let lines = document.querySelectorAll(".line");
 
   updateVisit();
