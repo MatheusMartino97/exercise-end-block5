@@ -1,20 +1,29 @@
-window.onload = function() {
-  let basePyramid = 9;
+window.onload = function () {
+  let basePyramid = 5;
   let numberOfLines = (basePyramid + 1) / 2; // 5
   let controlLeft = numberOfLines; // 5
   let controlRight = numberOfLines; // 5
+
+  for (let i = 1; i <= numberOfLines; i++) {
+    let div = document.createElement("div");
+    div.classList.add("line");
+
+    let triangle = document.querySelector(".triangle");
+    triangle.appendChild(div);
+  }
+
   let lines = document.querySelectorAll(".line");
 
   updateVisit();
 
   fillTriangle(lines);
-  
+
   // Atualiza a quantidade de visitar no site, utilizando o LocalStorage
   function updateVisit() {
-    if (typeof (Storage) != "undefined") {
-      if(localStorage.count !== undefined) {
+    if (typeof Storage != "undefined") {
+      if (localStorage.count !== undefined) {
         let count = parseInt(localStorage.count);
-        count+=1;
+        count += 1;
         localStorage.count = count;
         document.getElementById("count").innerHTML = count;
       } else {
@@ -23,12 +32,12 @@ window.onload = function() {
       }
     } else {
       document.write("Sem suporte para Web Storage");
-    }  
+    }
   }
 
   // Passa por todos as linhas (div com class line) e preenche o triangulo
   function fillTriangle(lines) {
-    for(let index = 0; index < lines.length; index += 1) {
+    for (let index = 0; index < lines.length; index += 1) {
       fillLine(lines[index]);
       controlRight += 1;
       controlLeft -= 1;
@@ -45,7 +54,7 @@ window.onload = function() {
   // Preenche uma linha
   function fillLine(divLine) {
     for (let lineColumn = 1; lineColumn <= basePyramid; lineColumn += 1) {
-      if(lineColumn >= controlLeft && lineColumn <= controlRight) {
+      if (lineColumn >= controlLeft && lineColumn <= controlRight) {
         let box = createBox("box");
         divLine.appendChild(box);
       } else {
@@ -53,4 +62,4 @@ window.onload = function() {
       }
     }
   }
-}
+};
